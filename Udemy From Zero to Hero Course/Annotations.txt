@@ -235,3 +235,7 @@ print(b) # Only works because of __str__ method, otherwise it would have given a
 
 del b # Would have worked without redefinition but it would print nothing
 	  # With redefinition it deletes and prints
+
+Modules and Packages in Python 3
+
+-> if __name__ == "__main__" the .py script is being executed directly
