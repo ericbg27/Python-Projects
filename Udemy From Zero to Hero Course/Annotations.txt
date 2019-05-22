@@ -183,7 +183,7 @@ class Cat(Animal):
 	def speak(self):
 		return self.name + " says meow!"
 
-fido = Dod("Fido")
+fido = Dog("Fido")
 isis = Cat("Isis")
 
 print(fido.speak())
@@ -236,4 +236,40 @@ print(b) # Only works because of __str__ method, otherwise it would have given a
 del b # Would have worked without redefinition but it would print nothing
 	  # With redefinition it deletes and prints
 
+-> Decorators
 
+def new_decorator(original_func):
+
+	def wrap_func():
+		print("some extra code, before the original function")
+		
+		original_func()
+
+	 	print("some extra code, after the original function!")
+
+	return wrap_func
+
+def func_need_decorator():
+	print("I want to be decorated!!")
+
+func_needs_decorator()
+# OUTPUT
+# 1: I want to be decorated!!
+
+decorated_func = new_decorator(func_needs_decorator)
+
+decorated_func()
+# OUTPUT
+# 1: some extra code, before the original function
+# 2: I want to be decorated!!
+# 3: some extra code, after the original function!
+
+@ operator makes the decorator function
+
+@new_decorator #Take this off and the function loses the functionality provided by new_decorator func
+def func_need_decorator():
+	print("I want to be decorated!!")
+# OUTPUT
+# 1: some extra code, before the original function
+# 2: I want to be decorated!!
+# 3: some extra code, after the original function!
